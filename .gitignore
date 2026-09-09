@@ -1,0 +1,13 @@
+# 环境与密钥，绝不提交
+.env
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 虚拟环境
+.venv/
+venv/
+
+# 测试/工具缓存
+.pytest_cache/
