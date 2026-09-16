@@ -6,7 +6,9 @@ class ChatMessage(BaseModel):
     content:str
 
 class ChatRequest(BaseModel):
-    messages : list[ChatMessage]
+    conversation_id : str | None = None
+    message : str
 
 class ChatResponse(BaseModel):
-    answer:str
+    conversation_id : str
+    answer : str

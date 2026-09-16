@@ -11,3 +11,5 @@ venv/
 
 # 测试/工具缓存
 .pytest_cache/
+
+chat_history.db
