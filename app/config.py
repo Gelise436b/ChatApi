@@ -8,3 +8,4 @@ MODEL = os.getenv("DEEPSEEK_MODEL","deepseek-chat")
 SECRET_KEY = os.getenv("SECRET_KEY","dev-only-change-me")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+MAX_HISTORY_MESSAGES = 20

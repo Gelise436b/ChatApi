@@ -1,6 +1,6 @@
 
 import sqlite3
-
+from app.config import MAX_HISTORY_MESSAGES
 DB_PATH = "chat_history.db"
 
 conn = sqlite3.connect(DB_PATH)
@@ -26,11 +26,12 @@ def save_message(conversation_id : str, role : str,content : str)-> None:
     conn.commit()
     conn.close()
 
-def get_history(conversation_id : str) -> list[dict]:
+def get_history(conversation_id : str,limit:int = MAX_HISTORY_MESSAGES) -> list[dict]:
     conn = sqlite3.connect(DB_PATH)
     rows = conn.execute(
-        "SELECT role,content FROM messages WHERE conversation_id = ? ORDER BY id",
-        (conversation_id,),
+        "SELECT role,content FROM messages WHERE conversation_id = ? ORDER BY id DESC LIMIT ?",
+        (conversation_id,limit),   # ⚠️❌ 大小写不一致：参数名是 limit（小写），写成 LIMIT 会 NameError
     ).fetchall()
     conn.close()
+    rows.reverse()
     return [{"role":role,"content":content} for role,content in rows]
