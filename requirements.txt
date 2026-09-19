@@ -1,0 +1,22 @@
+# ===== 生产依赖（部署时用这个）=====
+# 安装：pip install -r requirements.txt
+
+# --- Web 框架 ---
+fastapi==0.140.1
+uvicorn==0.51.0
+
+# --- 配置 ---
+python-dotenv==1.2.2
+
+# --- 认证（JWT + 密码哈希）---
+python-jose[cryptography]==3.5.0
+passlib==1.7.4
+# ⚠️ bcrypt 必须锁 4.0.1：passlib 1.7.4 与 bcrypt 4.1+ 不兼容（读不到版本号会报错）
+bcrypt==4.0.1
+
+# ⚠️ OAuth2PasswordRequestForm 解析表单需要它；漏了 /token 会直接报错
+python-multipart==0.0.32
+
+# --- 大模型调用 ---
+openai==3.10.0
+httpx==0.28.1          # openai 底层的 HTTP 客户端（TestClient 也用它）

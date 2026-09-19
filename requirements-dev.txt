@@ -1,0 +1,8 @@
+# ===== 开发依赖（只在本机跑测试用，部署时不需要）=====
+# 安装：pip install -r requirements-dev.txt
+#
+# 第一行表示"先把生产依赖也装上"
+
+-r requirements.txt
+
+pytest==9.1.1
